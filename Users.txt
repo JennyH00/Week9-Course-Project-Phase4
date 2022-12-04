@@ -2,4 +2,6 @@ JHawkins|password|Admin
 AHawkins|abcdef|Admin
 CJ|010101|User
 Jack|123456|User
-
+Peter|xyzabc|User
+Charlie|098765|User
+username|pwd|Admin

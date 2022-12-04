@@ -27,8 +27,8 @@ def GetUserName():
     return username
 
 def GetUserPassword():
-    pwd = input("Enter password: ")
-    return pwd
+    userpassword = input("Enter password: ")
+    return userpassword
 
 def GetUserRole():
     userrole = input(" Enter role (Admin or User): ")
