@@ -23,12 +23,12 @@ def CreateUsers():
     printuserinfo()
 
 def GetUserName():
-    username = input("Enter user name or 'END' to quit: ")
+    username = input("Enter user name or 'End' to quit: ")
     return username
 
 def GetUserPassword():
-    userpassword = input("Enter password: ")
-    return userpassword
+    pwd = input("Enter password: ")
+    return pwd
 
 def GetUserRole():
     userrole = input(" Enter role (Admin or User): ")
@@ -49,7 +49,7 @@ def printuserinfo():
         username = UserList[0]
         userpassword = UserList[1]
         userrole = UserList[2]
-        print("User Name: ", username, "Password: ", userpassword, "Role: ", userrole)
+        print("User Name: ", username, " Password: ", userpassword, " Role: ", userrole)
 
 #####################################################################################################
 
@@ -177,7 +177,7 @@ if __name__ == "__main__":
     DetailsPrinted = False  ###
     EmpTotals = {} ###
     if (UserRole.upper() == "NONE"): #User not found in user file
-        print(UserName, " is invalid")
+        print(UserName, " is invalid.")
     else:
         # only admin user can enter data
         if (UserRole.upper() == "ADMIN"):
