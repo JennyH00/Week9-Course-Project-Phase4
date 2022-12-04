@@ -102,7 +102,7 @@ def printinfo(DetailsPrinted):
     TotTax = 0.00
     TotNetPay = 0.00
 ###################################################################
-    # write the line of code to open Employees.txt file in read mode and assign to EmpFile
+ 
     EmpFile = open("Employees.txt", "r")
 
     while True:
@@ -117,14 +117,11 @@ def printinfo(DetailsPrinted):
             print()
             continue  # skip next while statement and re-start loop
     while True:
-        # write the line of code to read a record from EmpFile and assign it to EmpDetail
         EmpDetail = EmpFile.readline()
 
         if not EmpDetail:
             break
-        #write the line of code to remove the carriage return from the end of the record read from the file
         EmpDetail = EmpDetail.replace("\n", "")
-        #write the line of code to split the record read in on the pipe delimiter and assign it to EmpList
         EmpList = EmpDetail.split("|")
 
         fromdate = EmpList[0]
@@ -132,7 +129,6 @@ def printinfo(DetailsPrinted):
             checkdate = datetime.strptime(fromdate, "%m/%d/%Y")
             if (checkdate < rundate):
                 continue        
-######################################################################
         todate = EmpList[1]
         empname = EmpList[2]
         hours = float(EmpList[3])
@@ -177,7 +173,7 @@ if __name__ == "__main__":
     if (UserRole.upper() == "NONE"): #User not found in user file
         print(UserName, " is invalid")
     else:
-        # noly admin user can enter data
+        # only admin user can enter data
         if (UserRole.upper() == "ADMIN"):
 
     ###################################################################
