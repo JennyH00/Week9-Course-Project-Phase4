@@ -1,0 +1,5 @@
+JHawkins|password|Admin
+AHawkins|abcdef|Admin
+CJ|010101|User
+Jack|123456|User
+

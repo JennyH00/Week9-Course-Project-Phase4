@@ -17,7 +17,7 @@ def CreateUsers():
         userrole = GetUserRole()
 
         UserDetail = username + "|" + userpwd + "|" + userrole + "\n"
-        userfile.write(UserDetail)
+        UserFile.write(UserDetail)
     # close the file to save data
     UserFile.close()
     printuserinfo()
@@ -39,7 +39,7 @@ def GetUserRole():
             userrole = input("Enter role (Admin or User): ")
 
 def printuserinfo():
-    UserFile = open("Users.txt", "r")
+    UserFile = open("Users.txt","r")
     while True:
         UserDetail = UserFile.readline()
         if not UserDetail:
@@ -49,16 +49,16 @@ def printuserinfo():
         username = UserList[0]
         userpassword = UserList[1]
         userrole = UserList[2]
-        print("User Name: ", "Password: ", userpassword, "Role: ", userrole)
+        print("User Name: ", username, "Password: ", userpassword, "Role: ", userrole)
 
 #####################################################################################################
 
 def Login():
         # Read login information and store in a list
-    UserFile = open("Users.txt", "r")
+    UserFile = open("Users.txt","r")
     UserList = []
     UserName = input("Enter User Name: ")
-    UserRole = "NONE"
+    UserRole = "None"
     while True:
         UserDetail = UserFile.readline()
         if not UserDetail:
@@ -70,7 +70,7 @@ def Login():
             return UserRole, UserName
     return UserRole, UserName
 
-
+####################################################################################################
 
 
 def GetEmpName():
@@ -101,9 +101,20 @@ def printinfo(DetailsPrinted):
     TotGrossPay = 0.00
     TotTax = 0.00
     TotNetPay = 0.00
+
+
+def PrintTotals(EmpTotals):    
+    print()
+    print(f'Total Number Of Employees: {EmpTotals["TotEmp"]}')
+    print(f'Total Hours Worked: {EmpTotals["TotHrs"]:,.2f}')
+    print(f'Total Gross Pay: {EmpTotals["TotGrossPay"]:,.2f}')
+    print(f'Total Income Tax:  {EmpTotals["TotTax"]:,.2f}')
+    print(f'Total Net Pay: {EmpTotals["TotNetPay"]:,.2f}')
+
+
 ###################################################################
  
-    EmpFile = open("Employees.txt", "r")
+    EmpFile = open("Employees.txt","r")
 
     while True:
         rundate = input ("Enter start date for report (MM/DD/YYYY) or All for all data in file: ")
@@ -151,6 +162,9 @@ def printinfo(DetailsPrinted):
         PrintTotals (EmpTotals)
     else:
         print("No detail information to print")
+
+
+        
 def PrintTotals(EmpTotals):    
     print()
     print(f'Total Number Of Employees: {EmpTotals["TotEmp"]}')
