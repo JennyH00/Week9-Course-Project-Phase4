@@ -103,14 +103,6 @@ def printinfo(DetailsPrinted):
     TotNetPay = 0.00
 
 
-def PrintTotals(EmpTotals):    
-    print()
-    print(f'Total Number Of Employees: {EmpTotals["TotEmp"]}')
-    print(f'Total Hours Worked: {EmpTotals["TotHrs"]:,.2f}')
-    print(f'Total Gross Pay: {EmpTotals["TotGrossPay"]:,.2f}')
-    print(f'Total Income Tax:  {EmpTotals["TotTax"]:,.2f}')
-    print(f'Total Net Pay: {EmpTotals["TotNetPay"]:,.2f}')
-
 
 ###################################################################
  
@@ -183,7 +175,7 @@ if __name__ == "__main__":
     print("#### Data Entry ####")
     UserRole, UserName = Login()
     DetailsPrinted = False  ###
-    Emptotals = {} ###
+    EmpTotals = {} ###
     if (UserRole.upper() == "NONE"): #User not found in user file
         print(UserName, " is invalid")
     else:
@@ -191,7 +183,7 @@ if __name__ == "__main__":
         if (UserRole.upper() == "ADMIN"):
 
     ###################################################################
-            EmpFile = open("Employees.txt", "a")
+            EmpFile = open("Employees.txt", "a+")
             while True:
                 empname = GetEmpName()
                 if (empname.upper() == "END"):
