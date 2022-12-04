@@ -4,6 +4,75 @@
 # write the line of code to import the datetime library (Hint: look at week 1 labs)
 from datetime import datetime
 
+#################################################################################################
+
+def CreateUsers():
+    print("##### Create users, passwords, and roles #####")
+    UserFile = open("Users.txt", "a+")
+    while True:
+        username = GetUserName()
+        if (username.upper() == "END"):
+            break
+        userpwd = GetUserPassword()
+        userrole = GetUserRole()
+
+        UserDetail = username + "|" + userpwd + "|" + userrole + "\n"
+        userfile.write(UserDetail)
+    # close the file to save data
+    UserFile.close()
+    printuserinfo()
+
+def GetUserName():
+    username = input("Enter user name or 'END' to quit: ")
+    return username
+
+def GetUserPassword():
+    pwd = input("Enter password: ")
+    return pwd
+
+def GetUserRole():
+    userrole = input(" Enter role (Admin or User): ")
+    while True:
+        if (userrole.upper() == "ADMIN" or userrole.upper() == "USER"):
+            return userrole
+        else:
+            userrole = input("Enter role (Admin or User): ")
+
+def printuserinfo():
+    UserFile = open("Users.txt", "r")
+    while True:
+        UserDetail = UserFile.readline()
+        if not UserDetail:
+            break
+        UserDetail = UserDetail.replace("\n", "") #remove carriage return from end of line
+        UserList = UserDetail.split("|")
+        username = UserList[0]
+        userpassword = UserList[1]
+        userrole = UserList[2]
+        print("User Name: ", "Password: ", userpassword, "Role: ", userrole)
+
+#####################################################################################################
+
+def Login():
+        # Read login information and store in a list
+    UserFile = open("Users.txt", "r")
+    UserList = []
+    UserName = input("Enter User Name: ")
+    UserRole = "NONE"
+    while True:
+        UserDetail = UserFile.readline()
+        if not UserDetail:
+            return UserRole, UserName
+        UserDetail = UserDetail.replace("\n", "") #remove carriage return from end of line
+        UserList = UserDetail.split("|")
+        if UserName == UserList[0]:
+            UserRole = UserList[2]   # User is valid, return role
+            return UserRole, UserName
+    return UserRole, UserName
+
+
+
+
 def GetEmpName():
     empname = input("Enter employee name: ")
     return empname
@@ -103,10 +172,10 @@ if __name__ == "__main__":
     print()
     print("#### Data Entry ####")
     UserRole, UserName = Login()
-    DetailsPrinted = False   ###
+    DetailsPrinted = False  ###
     Emptotals = {} ###
-    if (UserRole.upper() =="NONE"): #User not found in user file
-        print(UserNaem, "is invalid")
+    if (UserRole.upper() == "NONE"): #User not found in user file
+        print(UserName, " is invalid")
     else:
         # noly admin user can enter data
         if (UserRole.upper() == "ADMIN"):
